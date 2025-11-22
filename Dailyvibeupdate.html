@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>DailyVibe Update</title>
+  <link rel="stylesheet" href="dailvibeupdate.css"/>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <h1>DailyVibe Update</h1>
+      <p class="tag">Trending • Football • Entertainment • Naija News</p>
+    </div>
+    <nav>
+      <button onclick="showSection('home')">Home</button>
+      <button onclick="showSection('categories')">Categories</button>
+      <button onclick="showSection('admin')">Admin</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="section active">
+      <div class="controls">
+        <input id="search" placeholder="Search headlines..." oninput="searchPosts()" />
+        <select id="feedSelect" onchange="changeFeedSource()">
+          <option value="default">Auto (mixed feeds)</option>
+          <option value="sports">Sports feeds</option>
+          <option value="entertainment">Entertainment feeds</option>
+        </select>
+        <button id="refreshBtn">Refresh</button>
+      </div>
+
+      <div id="ad-top" class="ad">[Ad space — paste AdSense code here]</div>
+
+      <div id="posts" class="posts"></div>
+
+      <div id="ad-bottom" class="ad">[Ad space — paste AdSense code here]</div>
+    </section>
+
+    <section id="categories" class="section">
+      <h2>Categories</h2>
+      <div class="cats">
+        <button onclick="filter('all')">All</button>
+        <button onclick="filter('sports')">Sports</button>
+        <button onclick="filter('entertainment')">Entertainment</button>
+        <button onclick="filter('trending')">Trending</button>
+      </div>
+      <div id="cat-posts" class="posts"></div>
+    </section>
+
+    <section id="admin" class="section">
+      <h2>Admin — quick post (local only)</h2>
+      <p class="hint">Add quick story locally (saved to your browser). To publish live use hosting + CMS later.</p>
+      <form id="adminForm" onsubmit="addManualPost(event)">
+        <input id="adm-title" placeholder="Title" required/>
+        <input id="adm-img" placeholder="Image URL (optional)" />
+        <select id="adm-cat"><option value="trending">Trending</option><option value="sports">Sports</option><option value="entertainment">Entertainment</option></select>
+        <textarea id="adm-desc" rows="4" placeholder="Short description" required></textarea>
+        <button type="submit">Add Post</button>
+        <button type="button" onclick="clearLocal()">Clear local posts</button>
+      </form>
+      <div id="admin-list"></div>
+    </section>
+
+    <section id="about" class="section">
+      <h2>About DailyVibe Update</h2>
+      <p>DailyVibe Update brings trending football & entertainment news fast. Auto-updates from trusted RSS feeds.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 DailyVibe Update — built by you. <a href="#" onclick="openPrivacy()">Privacy</a></p>
+  </footer>
+
+  <script src="dailvibeupdate.js"></script>
+</body>
+</html>
